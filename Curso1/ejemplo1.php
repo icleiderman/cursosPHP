@@ -2,5 +2,5 @@
 
 echo "hello";
 
-eqwe
+echo "sad";
 ?>
