@@ -4,5 +4,5 @@ echo "hello";
 
 echo "sad";
 
-kokko
+print "ds";
 ?>
