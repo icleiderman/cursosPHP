@@ -5,5 +5,8 @@ echo "hello";
 echo "sad";
 
 print "ds";  
-hola
+
+if(TRUE){
+	echo "verdadero";
+}
 ?>
