@@ -21,7 +21,7 @@
 <?php
 	//includes
 	include('conexion.php');
-	getConexion($_POST['conexion']);
+	getConexion($_POST['conexion']); 
 	
 	//post params
 	$sqlElementos =$_POST['sqlElementos'];
