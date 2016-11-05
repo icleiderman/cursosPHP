@@ -12,7 +12,7 @@
 				console.log(formulario);
 				formulario.submit();
 
-				console.log("fin funcion");
+				console.log("fin funcion"); 
 			}
 		</script>
 	
@@ -21,7 +21,7 @@
 <?php
 	//includes
 	include('conexion.php');
-	getConexion($_POST['conexion']); 
+	getConexion($_POST['conexion']);   
 	
 	//post params
 	$sqlElementos =$_POST['sqlElementos'];
