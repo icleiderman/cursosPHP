@@ -18,6 +18,7 @@
 <body>
 <?php	
 	include('conexion.php');
+	getConexion($_POST['conexion']);
 	
 	//post params
 	$sqlElementos =$_POST['sqlElementos'];
@@ -30,10 +31,10 @@
 
 	if( strlen ($sqlKeyValue) >0 ){
 		//conexion con manejador de base de datos
-		$con = mysql_connect($host, $user, $pw) or die("Ocurrio un problema con el manejador de base de datos");
+		$con = mysql_connect($MY_HOST, $MY_DB_USER, $MY_DB_PW) or die("Ocurrio un problema con el manejador de base de datos");
 		
 		//conexion con base de datos
-		mysql_select_db($db, $con) or die ("Ocurrió un error al intentar conectarse con base de datos $db");
+		mysql_select_db($MY_DB_NAME, $con) or die ("Ocurrió un error al intentar conectarse con base de datos $MY_DB_NAME");
 		
 		// sql consulta
 		$sel = mysql_query("select $sqlElementos from $sqlTabla where $sqlKey='$sqlKeyValue'", $con)or die("Problemas al consultar los $sqlTabla <br>Error:". mysql_error());

@@ -2,6 +2,7 @@
 
 
 	include('conexion.php');
+	getConexion($_POST['conexion']);
 
 	$usuario = $_POST[usuario];
 	$pwd = $_POST[pw];
@@ -13,8 +14,8 @@ echo "$empty($status)";
 		isset($pwd) && !empty($pwd)
 		){
 
-	$con = mysql_connect($host, $user, $pw) or die("Ocurrio un problema al intentar conectarse");
-	mysql_select_db($db, $con) or die ("Ocurrió un error al intentar conectarse con base de datos");
+	$con = mysql_connect($MY_HOST, $MY_DB_USER, $pw) or die("Ocurrio un problema al intentar conectarse");
+	mysql_select_db($MY_DB_NAME, $con) or die ("Ocurrió un error al intentar conectarse con base de datos");
 
 	$sel = mysql_query("select user, pw from usuarios where user = '$usuario'", $con);
 

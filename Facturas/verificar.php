@@ -4,13 +4,14 @@ session_start();
 
 
 	include('conexion.php');
+	getConexion($_POST['conexion']);
 	if(isset($_POST['user'])&& !empty($_POST['user'])&&
 		isset($_POST['pw']) && !empty($_POST['pw'])
 	){
 
 
-		$con = mysql_connect($host, $user, $pw) or die("Ocurrio un problema con el servidor");
-		mysql_select_db($db, $con) or die ("Ocurrió un error al intentar conectarse con base de datos");
+		$con = mysql_connect($MY_HOST, $MY_DB_USER, $pw) or die("Ocurrio un problema con el servidor");
+		mysql_select_db($MY_DB_NAME, $con) or die ("Ocurrió un error al intentar conectarse con base de datos");
 
 		$sel = mysql_query("select user, pw from usuarios where user = '$_POST[user]'", $con)
 		or die('El usuario no existe' . mysql_error());

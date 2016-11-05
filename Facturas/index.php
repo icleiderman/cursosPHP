@@ -19,14 +19,15 @@
 	</head>
 	<body>
 		<form action="listado.php" method="post" id="frmPrincipal" >
+			<input type="hidden" name="conexion" id="conexion" value="CESCO">
 			<input type="hidden" name="titulo" id="titulo" value="">
 			<input type="hidden" name="sqlElementos" id="sqlElementos" value="">
 			<input type="hidden" name="sqlTabla" id="sqlTabla" value="">
 			<input type="hidden" name="sqlKey" id="sqlKey" value="">
 		</form>
 		<ol>
-        	<li><a id="" href="#" onclick="ir('Usuarios','nombre|user|pwd|fechaRegistro','usuarios','user')">Usuarios</a>	</li>
-        <li><a id="" href="#" onclick="ir('Productos','clave|descripcion|cantidad|costo','productos','clave')">Productos</a>	</li>
+        	<li><a id="" href="#" onclick="ir('Usuarios','nombre|user|pwd','usuarios','user')">Usuarios</a>	</li>
+        	<li><a id="" href="#" onclick="ir('Productos','clave|descripcion|cantidad|costo','productos','clave')">Productos</a>	</li>
 		</ol>
       
 	</body>
