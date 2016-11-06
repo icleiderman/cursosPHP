@@ -2,7 +2,7 @@
 
 
 	include('conexion.php');
-	getConexion($_POST['conexion']);
+	$MY_DB_PW = getConexion($_POST['conexion']);
 
 	$usuario = $_POST[usuario];
 	$pwd = $_POST[pw];

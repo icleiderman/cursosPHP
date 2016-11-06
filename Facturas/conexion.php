@@ -13,6 +13,7 @@
 
 			$MY_DB_PW = "12345678";
 		}
+		return $MY_DB_PW;
 	}
 
 

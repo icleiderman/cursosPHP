@@ -19,7 +19,7 @@
 	</head>
 	<body>
 		<form action="listado.php" method="post" id="frmPrincipal" >
-			<input type="hidden" name="conexion" id="conexion" value="CESCO">
+			<input type="hidden" name="conexion" id="conexion" value="local">
 			<input type="hidden" name="titulo" id="titulo" value="">
 			<input type="hidden" name="sqlElementos" id="sqlElementos" value="">
 			<input type="hidden" name="sqlTabla" id="sqlTabla" value="">

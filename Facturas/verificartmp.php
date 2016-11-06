@@ -4,7 +4,7 @@ session_start();
 
 
 	include('conexion.php');
-	getConexion($_POST['conexion']);
+	$MY_DB_PW = getConexion($_POST['conexion']);
 
 
 

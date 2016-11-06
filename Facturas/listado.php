@@ -21,7 +21,7 @@
 <?php
 	//includes
 	include('conexion.php');
-	getConexion($_POST['conexion']);   
+	$MY_DB_PW = getConexion($_POST['conexion']);   
 	
 	//post params
 	$sqlElementos =$_POST['sqlElementos'];
