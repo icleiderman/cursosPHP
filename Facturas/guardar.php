@@ -4,14 +4,15 @@
 	<title>Registro de <?=$_POST['titulo']?></title>
 		<script type="text/javascript">
 			function cancelar() {
-				console.log("inicio funcion");
-				
 				var formulario = document.forms['frmRegistrar'];
-				formulario.action = "listado.php";				
-				console.log(formulario);
+				formulario.action = "listado.php";			
 				formulario.submit();
+			}
 
-				console.log("fin funcion");
+			function borrar() {
+				var formulario = document.forms['frmRegistrar'];
+				document.getElementById("accion").value = "Borrar";	
+				formulario.submit();
 			}
 		</script>
 </head>
@@ -25,6 +26,7 @@
 	$sqlTabla =$_POST['sqlTabla'];
 	$sqlKey =$_POST['sqlKey'];
 	$sqlKeyValue =$_POST['sqlKeyValue'];
+	$accion =$_POST['accion'];
 	
 	// tratamiento de parametros
 	$arrayElementos = explode(",", $sqlElementos); // convierte en array
@@ -46,13 +48,17 @@
 
 <h1>Registro de <?=$_POST['titulo']?>.</h1>
 
-	<form action="insertar.php" id="frmRegistrar" method="POST">
+	<form action="accion.php" name="frmRegistrar" id="frmRegistrar" method="POST">
 		<input type="hidden" name="titulo" id="titulo" value="<?=$_POST['titulo']?>">
 		<input type="hidden" name="sqlElementos" id="sqlElementos" value="<?=$sqlElementos?>">
 		<input type="hidden" name="sqlTabla" id="sqlTabla" value="<?=$sqlTabla?>">
 		<input type="hidden" name="sqlKey" id="sqlKey" value="<?=$sqlKey?>">
 		<input type="hidden" name="sqlKeyValue" id="sqlKeyValue" value="<?=$sqlKeyValue?>">
-		<input type="submit" value="Crear <?=$sqlKey?>">
+		<input type="hidden" name="accion" id="accion" value="<?=$accion?>">
+		<input type="submit" value="<?=$accion?> <?=$sqlTabla?>">
+		<? if($accion != "Crear"){ ?>
+			<input type="button" onclick="borrar()" value="Borrar">		
+		<?}?>
 		<input type="button" onclick="cancelar()" value="Cancelar">
 		
 		<table border ="1">			
@@ -62,9 +68,13 @@
 				<td><input type="<?=( strcmp( "pwd", trim($arrayElementos[$i]) ) == 0 ?"password":"text")?>" name="<?=$arrayElementos[$i]?>" id="<?=$arrayElementos[$i]?>" value="<?=$fila[$i]?>" ></td>
 			</tr>
 		<?}?>
-		</table>	
-
-		
+		</table>		
 	</form>
+
+	<? if($accion == "Borrar"){ ?>
+		<script type="text/javascript">
+			document.frmRegistrar.submit();
+		</script>
+	<?}?>
 </body>
 </html>

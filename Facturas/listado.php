@@ -3,16 +3,11 @@
 <head>
 	<title><?=$_POST['titulo']?> registrados</title>
 	<script type="text/javascript">
-			function modificar(sqlKeyValue) {
-				console.log("inicio funcion");
-				
+			function modificar(accion,sqlKeyValue) {				
 				var formulario = document.forms['frmListado'];
 				document.getElementById("sqlKeyValue").value = sqlKeyValue;
-				
-				console.log(formulario);
+				document.getElementById("accion").value = accion;
 				formulario.submit();
-
-				console.log("fin funcion"); 
 			}
 		</script>
 	
@@ -51,13 +46,15 @@
 ?>
 	<h2>Administración de <?=$_POST['titulo']?></h2>
 	
-	<form action="registrar.php" method="post" id="frmListado" >
+	<form action="guardar.php" method="post" id="frmListado" >
+		<input type="hidden" name="conexion" id="conexion" value="<?=$_POST['conexion']?>">
 		<input type="hidden" name="titulo" id="titulo" value="<?=$_POST['titulo']?>">
 		<input type="hidden" name="sqlElementos" id="sqlElementos" value="<?=$sqlElementos?>">
 		<input type="hidden" name="sqlTabla" id="sqlTabla" value="<?=$sqlTabla?>">
 		<input type="hidden" name="sqlKey" id="sqlKey" value="<?=$sqlKey?>">
 		<input type="hidden" name="sqlKeyValue" id="sqlKeyValue" value="">
-		<input type="button" onclick="modificar('')" value="Crear <?=$sqlKey?>">	
+		<input type="hidden" name="accion" id="accion" value="">
+		<input type="button" onclick="modificar('Crear')" value="Crear <?=$sqlTabla?>">	
 		<input type="button" onclick="document.location='index.php'" value="Cancelar">
 
 		<table border = "1">
@@ -69,7 +66,7 @@
 				?>
 					<th><?=$arrayElementos[$i]?></th>
 				<?}?>
-					<th>Acción</th>
+					<th></th>
 			</tr>
 			
 			<?while ($fila = mysql_fetch_array($sel, MYSQL_NUM)){?>
@@ -81,7 +78,10 @@
 					?>
 						<td><?=$fila[$i]?></td>
 					<?}?>
-					<td><input type="button" onclick="modificar('<?=$sqlKeyValue?>')" value="Modificar"></td>
+					<td>
+						<input type="button" onclick="modificar('Modificar','<?=$sqlKeyValue?>')" value="Modificar">
+						<input type="button" onclick="modificar('Borrar','<?=$sqlKeyValue?>')" value="Borrar">
+					</td>
 				</tr>
 			<?}?>		
 		</table>
