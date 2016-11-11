@@ -18,8 +18,8 @@
 </head>
 <body>
 <?php	
-	include('conexion.php');
-	$MY_DB_PW = getConexion($_POST['conexion']);
+
+	include('session.php');
 	
 	//post params
 	$sqlElementos =$_POST['sqlElementos'];
@@ -41,7 +41,9 @@
 		// sql consulta
 		$sel = mysql_query("select $sqlElementos from $sqlTabla where $sqlKey='$sqlKeyValue'", $con)or die("Problemas al consultar los $sqlTabla <br>Error:". mysql_error());
 		$fila = mysql_fetch_array($sel, MYSQL_NUM);
-		
+				
+	}else{
+		header("Location: main.php");
 	}
 	
 ?>
@@ -49,6 +51,7 @@
 <h1>Registro de <?=$_POST['titulo']?>.</h1>
 
 	<form action="accion.php" name="frmRegistrar" id="frmRegistrar" method="POST">
+		<input type="hidden" name="conexion" id="conexion" value="<?=$_POST['conexion']?>">
 		<input type="hidden" name="titulo" id="titulo" value="<?=$_POST['titulo']?>">
 		<input type="hidden" name="sqlElementos" id="sqlElementos" value="<?=$sqlElementos?>">
 		<input type="hidden" name="sqlTabla" id="sqlTabla" value="<?=$sqlTabla?>">

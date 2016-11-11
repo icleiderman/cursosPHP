@@ -1,3 +1,6 @@
+<?php
+include('session.php');
+?>
 <html>
 	<head>
 		<script type="text/javascript">
@@ -28,6 +31,7 @@
 		<ol>
         	<li><a id="" href="#" onclick="ir('Usuarios','nombre|user|pwd','usuarios','user')">Usuarios</a>	</li>
         	<li><a id="" href="#" onclick="ir('Productos','clave|descripcion|cantidad|costo','productos','clave')">Productos</a>	</li>
+        	<li><a id="" href="logout.php">Salir</a></li>
 		</ol>
       
 	</body>

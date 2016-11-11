@@ -1,6 +1,6 @@
 <?php 
-	include('conexion.php');
-	$MY_DB_PW = getConexion($_POST['conexion']);
+
+	include('session.php');
 	
 	//post params
 	$sqlElementos =$_POST['sqlElementos'];

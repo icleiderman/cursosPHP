@@ -15,8 +15,7 @@
 <body>
 <?php
 	//includes
-	include('conexion.php');
-	$MY_DB_PW = getConexion($_POST['conexion']);   
+	include('session.php');  
 	
 	//post params
 	$sqlElementos =$_POST['sqlElementos'];
@@ -40,7 +39,7 @@
 	mysql_select_db($MY_DB_NAME, $con) or die ("Ocurrió un error al intentar conectarse con base de datos $MY_DB_NAME");
 	
 	// sql consulta
-	$sel = mysql_query("select $sqlElementos from $sqlTabla", $con)or die("Problemas al consultar los $sqlTabla <br>Error:". mysql_error());
+	$sel = mysql_query("select $sqlElementos from $sqlTabla", $con)or header("Location: main.php");//die("Problemas al consultar los $sqlTabla <br>Error:". mysql_error());
 
 
 ?>
@@ -55,7 +54,7 @@
 		<input type="hidden" name="sqlKeyValue" id="sqlKeyValue" value="">
 		<input type="hidden" name="accion" id="accion" value="">
 		<input type="button" onclick="modificar('Crear')" value="Crear <?=$sqlTabla?>">	
-		<input type="button" onclick="document.location='index.php'" value="Cancelar">
+		<input type="button" onclick="document.location='main.php'" value="Cancelar">
 
 		<table border = "1">
 			<tr><!-- Encabezado-->
